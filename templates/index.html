@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disease Prediction System</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🏥 Disease Prediction System</h1>
+        <p>Select your symptoms below</p>
+
+        <div class="symptoms-grid">
+            {% for symptom in symptoms %}
+            <label class="symptom-item">
+                <input type="checkbox" value="{{ symptom }}">
+                {{ symptom.replace('_', ' ').title() }}
+            </label>
+            {% endfor %}
+        </div>
+
+        <button onclick="predict()">Predict Disease</button>
+
+        <div id="result" class="result hidden">
+            <h2>Result:</h2>
+            <p id="disease-name"></p>
+            <p id="confidence"></p>
+        </div>
+    </div>
+    <script src="/static/script.js"></script>
+</body>
+<a href="/download_csv">
+    <button>Download History CSV</button>
+</a>
+</html>
